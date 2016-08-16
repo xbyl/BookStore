@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:fresco="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+                android:padding="8dp"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/imageView_book_pic"
+        android:layout_width="80dp"
+        android:layout_height="128dp"
+        fresco:placeholderImage="@mipmap/a"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"/>
+    <!--<ImageView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:id="@+id/imageView_book_pic"-->
+    <!--android:src="@mipmap/a"-->
+    <!--android:layout_alignParentTop="true"-->
+    <!--android:layout_alignParentStart="true"/>-->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="bookname"
+        android:maxLines="2"
+        android:id="@+id/textView_bookName"
+        android:layout_alignTop="@+id/imageView_book_pic"
+        android:layout_toEndOf="@+id/imageView_book_pic"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:textSize="20sp"
+        android:textColor="@color/current_price"
+        android:text="现价"
+        android:id="@+id/textView_current_price"
+        android:layout_below="@+id/textView_bookName"
+        android:layout_toEndOf="@+id/imageView_book_pic"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:text="原价"
+        android:id="@+id/textView_original_price"
+        android:layout_below="@+id/textView_current_price"
+        android:layout_toEndOf="@+id/imageView_book_pic"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="2dp"
+        android:text="折扣"
+        android:background="@color/current_price"
+        android:textColor="@android:color/white"
+        android:id="@+id/textView_discount"
+        android:layout_below="@+id/textView_bookName"
+        android:layout_alignEnd="@+id/textView_bookName"
+        android:layout_marginEnd="46dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="星级"
+        android:id="@+id/textView_star_level"
+        android:layout_below="@+id/textView_discount"
+        android:layout_alignParentEnd="true"/>
+
+</RelativeLayout>

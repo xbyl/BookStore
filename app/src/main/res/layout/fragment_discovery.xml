@@ -1,0 +1,50 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context="com.moliying.jzc.bookstore.ui.fragment.DiscoveryFragment">
+
+    <com.astuetz.PagerSlidingTabStrip
+        android:id="@+id/tabs"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/colorPrimary"
+        android:textColor="@android:color/white"
+        app:pstsTabBackground="@color/transparent"
+        app:pstsTextAllCaps="false"
+        app:pstsShouldExpand="true"
+        app:pstsIndicatorColor="@android:color/white"
+        app:pstsIndicatorHeight="4dp"
+        app:pstsUnderlineHeight="1dp"
+        app:pstsDividerColor="@android:color/darker_gray"
+        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:padding="4dp"
+        android:background="@drawable/bg_search_shape"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/search_drawable_left"
+            android:text="搜索"
+            android:id="@+id/TextView_search"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"/>
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/include_layout_loading_discover">
+        <include layout="@layout/loading_layout"/>
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/view_pager_discovery"/>
+</LinearLayout>

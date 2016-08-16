@@ -1,0 +1,170 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:fresco="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              tools:context="com.moliying.jzc.bookstore.ui.fragment.PersonalFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:background="@color/colorPrimary">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:visibility="invisible"
+            android:id="@+id/imageView_mine_icon"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            fresco:placeholderImage="@mipmap/de_default_portrait"
+            fresco:placeholderImageScaleType="fitCenter"
+            fresco:roundAsCircle="true"/>
+
+        <Button
+            android:visibility="invisible"
+            android:id="@+id/button_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/bt_bg_address"
+            android:text="收货地址"/>
+
+        <TextView
+            android:id="@+id/textView_login"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="立即登录"
+            android:clickable="true"
+            android:textColor="@android:color/white"
+            android:textSize="26sp"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:background="@drawable/item_bg_selector"
+        android:clickable="true"
+        android:id="@+id/item_order"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:padding="4dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:src="@mipmap/icon_order_head"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:drawableRight="@mipmap/passport_arrow_right_normal"
+            android:gravity="center_vertical"
+            android:text="全部订单"
+            android:textSize="18sp"/>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/login_line"/>
+
+    <LinearLayout
+        android:background="@drawable/item_bg_selector"
+        android:clickable="true"
+        android:id="@+id/item_unpay"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:padding="4dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:src="@mipmap/icon_wallet_normal"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:drawableRight="@mipmap/passport_arrow_right_normal"
+            android:gravity="center_vertical"
+            android:text="待付款"
+            android:textSize="18sp"/>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/login_line"/>
+
+    <LinearLayout
+        android:background="@drawable/item_bg_selector"
+        android:clickable="true"
+        android:id="@+id/item_untruck"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:padding="4dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:src="@mipmap/icon_truck_normal"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:drawableRight="@mipmap/passport_arrow_right_normal"
+            android:gravity="center_vertical"
+            android:text="待收货"
+            android:textSize="18sp"/>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/login_line"/>
+
+    <LinearLayout
+        android:background="@drawable/item_bg_selector"
+        android:clickable="true"
+        android:id="@+id/item_unthumb"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:padding="4dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:src="@mipmap/icon_thumb_normal"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:drawableRight="@mipmap/passport_arrow_right_normal"
+            android:gravity="center_vertical"
+            android:text="待评价"
+            android:textSize="18sp"/>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/login_line"/>
+
+</LinearLayout>
