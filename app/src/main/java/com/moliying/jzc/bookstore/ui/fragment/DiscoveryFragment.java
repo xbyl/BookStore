@@ -13,7 +13,6 @@ import android.widget.TextView;
 import com.astuetz.PagerSlidingTabStrip;
 import com.moliying.jzc.bookstore.R;
 import com.moliying.jzc.bookstore.adapter.CategoryFragmentPageAdapter;
-import com.moliying.jzc.bookstore.vo.BookInfo;
 import com.moliying.jzc.bookstore.vo.Categroy;
 
 import java.util.ArrayList;
@@ -61,21 +60,8 @@ public class DiscoveryFragment extends BaseFragment {
                 if (e == null) {
                     for (final Categroy categroy : list) {
                         fragments.add(CategoryFragment.newInstance
-                                (null, categroy.getCategoryName()));
-                        BmobQuery<BookInfo> bmobQuery = new BmobQuery<BookInfo>();
-                        bmobQuery.addWhereEqualTo("categoryId", categroy.getObjectId());
-                        bmobQuery.findObjects(new FindListener<BookInfo>() {
-                            @Override
-                            public void done(List<BookInfo> list, BmobException e) {
-                                if (e == null) {
-                                    for (CategoryFragment fragment : fragments) {
-                                        if(fragment.title == categroy.getCategoryName()){
-                                            fragment.setList(list);
-                                        }
-                                    }
-                                }
-                            }
-                        });
+                                (categroy.getObjectId(), categroy.getCategoryName()));
+
                     }
                     LoadingCategory();
                 }

@@ -33,11 +33,12 @@ public class HomeFragment extends BaseFragment {
     ImageIndicatorView mImageIndicaterView;
     @BindView(R.id.books_home_listView)
     ListView mBooksHomeListView;
-    ArrayList<BookInfo> mBookInfos = new ArrayList<>();
-    ListViewAdapter listViewAdapter;
     @BindView(R.id.include_layout_loading_home)
     LinearLayout mIncludeLayoutLoadingHome;
+
     private boolean loadComplete = true ;
+    ArrayList<BookInfo> mBookInfos = new ArrayList<>();
+    ListViewAdapter listViewAdapter;
 
     public HomeFragment() {
     }

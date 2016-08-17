@@ -1,8 +1,5 @@
 package com.moliying.jzc.bookstore.vo;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import cn.bmob.v3.BmobObject;
 import cn.bmob.v3.datatype.BmobFile;
 
@@ -11,7 +8,7 @@ import cn.bmob.v3.datatype.BmobFile;
  * company: moliying.com
  * Created by vince on 16/07/13.
  */
-public class BookInfo extends BmobObject implements Parcelable {
+public class BookInfo extends BmobObject {
 
     private String categoryId;//类别ID
     private String catalog;//目录
@@ -220,77 +217,4 @@ public class BookInfo extends BmobObject implements Parcelable {
     public String getBookImagepath() {
         return mBookImagepath;
     }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(this.categoryId);
-        dest.writeString(this.catalog);
-        dest.writeString(this.authorDescription);
-        dest.writeString(this.contentDescription);
-        dest.writeInt(this.total);
-        dest.writeDouble(this.discount);
-        dest.writeDouble(this.discountPrice);
-        dest.writeDouble(this.price);
-        dest.writeString(this.publishingTime);
-        dest.writeString(this.publishingCompany);
-        dest.writeString(this.author);
-        dest.writeString(this.bookName);
-        dest.writeInt(this.star);
-        dest.writeSerializable(this.bookImage);
-        dest.writeString(this.ISBN);
-        dest.writeInt(this.revision);
-        dest.writeInt(this.pages);
-        dest.writeInt(this.NumberOfWords);
-        dest.writeString(this.folio);
-        dest.writeString(this.paper);
-        dest.writeString(this.packing);
-        dest.writeInt(this.impression);
-        dest.writeString(this.mBookImagepath);
-    }
-
-    public BookInfo() {
-    }
-
-    protected BookInfo(Parcel in) {
-        this.categoryId = in.readString();
-        this.catalog = in.readString();
-        this.authorDescription = in.readString();
-        this.contentDescription = in.readString();
-        this.total = in.readInt();
-        this.discount = in.readDouble();
-        this.discountPrice = in.readDouble();
-        this.price = in.readDouble();
-        this.publishingTime = in.readString();
-        this.publishingCompany = in.readString();
-        this.author = in.readString();
-        this.bookName = in.readString();
-        this.star = in.readInt();
-        this.bookImage = (BmobFile) in.readSerializable();
-        this.ISBN = in.readString();
-        this.revision = in.readInt();
-        this.pages = in.readInt();
-        this.NumberOfWords = in.readInt();
-        this.folio = in.readString();
-        this.paper = in.readString();
-        this.packing = in.readString();
-        this.impression = in.readInt();
-        this.mBookImagepath = in.readString();
-    }
-
-    public static final Parcelable.Creator<BookInfo> CREATOR = new Parcelable.Creator<BookInfo>() {
-        @Override
-        public BookInfo createFromParcel(Parcel source) {
-            return new BookInfo(source);
-        }
-
-        @Override
-        public BookInfo[] newArray(int size) {
-            return new BookInfo[size];
-        }
-    };
 }
