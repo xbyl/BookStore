@@ -30,8 +30,6 @@ import cn.bmob.v3.listener.FindListener;
  * A simple {@link Fragment} subclass.
  */
 public class DiscoveryFragment extends BaseFragment {
-
-
     @BindView(R.id.tabs)
     PagerSlidingTabStrip mTabs;
     @BindView(R.id.view_pager_discovery)
@@ -64,7 +62,6 @@ public class DiscoveryFragment extends BaseFragment {
                     for (final Categroy categroy : list) {
                         fragments.add(CategoryFragment.newInstance
                                 (null, categroy.getCategoryName()));
-                        LoadingCategory();
                         BmobQuery<BookInfo> bmobQuery = new BmobQuery<BookInfo>();
                         bmobQuery.addWhereEqualTo("categoryId", categroy.getObjectId());
                         bmobQuery.findObjects(new FindListener<BookInfo>() {
@@ -80,6 +77,7 @@ public class DiscoveryFragment extends BaseFragment {
                             }
                         });
                     }
+                    LoadingCategory();
                 }
             }
         });
