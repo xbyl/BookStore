@@ -1,13 +1,16 @@
 package com.moliying.jzc.bookstore.ui.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.moliying.jzc.bookstore.R;
 import com.moliying.jzc.bookstore.adapter.ListViewAdapter;
+import com.moliying.jzc.bookstore.ui.BookDetailActivity;
 import com.moliying.jzc.bookstore.vo.BookInfo;
 
 import java.util.ArrayList;
@@ -16,13 +19,11 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.DownloadFileListener;
 import cn.bmob.v3.listener.FindListener;
 
 
-public class CategoryFragment extends BaseFragment {
+public class CategoryFragment extends BaseFragment implements AdapterView.OnItemClickListener {
     public String title;
     public String categroyId;
     ArrayList<BookInfo> list = new ArrayList<>();
@@ -49,6 +50,7 @@ public class CategoryFragment extends BaseFragment {
         categroyId = getArguments().getString("categroyId");
         listViewAdapter = new ListViewAdapter(getActivity(),list);
         mListViewCategory.setAdapter(listViewAdapter);
+        mListViewCategory.setOnItemClickListener(this);
         loading();
         return view;
     }
@@ -63,31 +65,39 @@ public class CategoryFragment extends BaseFragment {
                     CategoryFragment.this.list.addAll(list);
 //                    listViewAdapter.setBookInfos(CategoryFragment.this.list);
                     listViewAdapter.notifyDataSetChanged();
-                    loadingImage();
+//                    loadingImage();
                 }
             }
         });
     }
 
-    private void loadingImage() {
-        for (final BookInfo bookInfo : list) {
-            BmobFile bmobfile = bookInfo.getBookImage();
-            bmobfile.download(new DownloadFileListener() {
-                @Override
-                public void done(String s, BmobException e) {
-                    if(e==null){
-                        bookInfo.setBookImagepath(s);
-                        listViewAdapter.notifyDataSetChanged();
-                    }else{
-                        System.out.println("下载失败："+e.getErrorCode()+","+e.getMessage());
-                    }
-                }
-                @Override
-                public void onProgress(Integer integer, long l) {
-//                    Log.i("bmob","下载进度："+integer+","+l);
-                }
-            });
-        }
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        BookInfo bookInfo = list.get(position);
+        Intent intent = new Intent(getActivity(), BookDetailActivity.class);
+        intent.putExtra("bookInfo",bookInfo);
+        startActivity(intent);
     }
+
+//    private void loadingImage() {
+//        for (final BookInfo bookInfo : list) {
+//            BmobFile bmobfile = bookInfo.getBookImage();
+//            bmobfile.download(new DownloadFileListener() {
+//                @Override
+//                public void done(String s, BmobException e) {
+//                    if(e==null){
+//                        bookInfo.setBookImagepath(s);
+//                        listViewAdapter.notifyDataSetChanged();
+//                    }else{
+//                        System.out.println("下载失败："+e.getErrorCode()+","+e.getMessage());
+//                    }
+//                }
+//                @Override
+//                public void onProgress(Integer integer, long l) {
+////                    Log.i("bmob","下载进度："+integer+","+l);
+//                }
+//            });
+//        }
+//    }
 
 }

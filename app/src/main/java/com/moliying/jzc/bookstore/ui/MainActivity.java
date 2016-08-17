@@ -39,6 +39,21 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         initView();
     }
 
+    @Override
+    protected void onDestroy() {
+        destroyView();
+        super.onDestroy();
+    }
+
+    private void destroyView() {
+        mMainViewPager.setAdapter(null);
+        mFragments.clear();
+        mFragments = null;
+        mRadioButtons.clear();
+        mRadioButtons = null;
+
+    }
+
     protected void initView() {
         mRadioButtons.add(mRadioButtonMain);
         mRadioButtons.add(mRadioButtonFind);

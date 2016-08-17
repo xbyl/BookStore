@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:background="@drawable/bt_bg_address"
+            android:background="@drawable/bt_bg_blue"
             android:text="收货地址"/>
 
         <TextView

@@ -1,7 +1,7 @@
 package com.moliying.jzc.bookstore.adapter;
 
 import android.content.Context;
-import android.net.Uri;
+import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +12,6 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.moliying.jzc.bookstore.R;
 import com.moliying.jzc.bookstore.vo.BookInfo;
 
-import java.io.File;
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -61,13 +60,11 @@ public class ListViewAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
         BookInfo bookInfo = bookInfos.get(position);
-        String path = bookInfo.getBookImagepath();
-        if(path != null){
-            holder.mImageViewBookPic.setImageURI(Uri.fromFile(new File(path)));
-        }
+        holder.mImageViewBookPic.setImageURI(bookInfo.getBookImage().getUrl());
         holder.mTextViewBookName.setText(bookInfo.getBookName());
         holder.mTextViewCurrentPrice.setText(String.valueOf("￥"+bookInfo.getDiscountPrice()));
         holder.mTextViewOriginalPrice.setText(String.valueOf(bookInfo.getPrice()));
+        holder.mTextViewOriginalPrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
         holder.mTextViewDiscount.setText(String.valueOf(bookInfo.getDiscount())+"折");
         holder.mTextViewStarLevel.setText(String.valueOf(bookInfo.getStar())+"星");
         return convertView;

@@ -10,6 +10,7 @@
         android:id="@+id/imageView_book_pic"
         android:layout_width="80dp"
         android:layout_height="128dp"
+        fresco:actualImageScaleType="fitCenter"
         fresco:placeholderImage="@mipmap/a"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"/>

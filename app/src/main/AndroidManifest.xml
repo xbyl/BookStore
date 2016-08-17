@@ -45,6 +45,8 @@
             android:name=".ui.RegisterActivity"
             android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".ui.BookDetailActivity">
+        </activity>
     </application>
 
 </manifest>

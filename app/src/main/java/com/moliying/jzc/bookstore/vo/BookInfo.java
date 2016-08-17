@@ -32,7 +32,6 @@ public class BookInfo extends BmobObject {
     private String paper;//纸张
     private String packing;//包装
     private int impression;//印次
-    private String mBookImagepath;
 
     public String getFolio() {
         return folio;
@@ -208,13 +207,5 @@ public class BookInfo extends BmobObject {
 
     public void setBookImage(BmobFile bookImage) {
         this.bookImage = bookImage;
-    }
-
-    public void setBookImagepath(String bookImagepath) {
-        mBookImagepath = bookImagepath;
-    }
-
-    public String getBookImagepath() {
-        return mBookImagepath;
     }
 }
