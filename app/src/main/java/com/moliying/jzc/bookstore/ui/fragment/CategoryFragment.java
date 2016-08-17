@@ -10,6 +10,7 @@ import com.moliying.jzc.bookstore.R;
 import com.moliying.jzc.bookstore.adapter.ListViewAdapter;
 import com.moliying.jzc.bookstore.vo.BookInfo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -21,19 +22,20 @@ import cn.bmob.v3.listener.DownloadFileListener;
 
 public class CategoryFragment extends BaseFragment {
     public String title;
-    List<BookInfo> list;
+    ArrayList<BookInfo> list = new ArrayList<>();
     @BindView(R.id.listView_category)
     ListView mListViewCategory;
     ListViewAdapter listViewAdapter;
     public static CategoryFragment newInstance(List<BookInfo> list, String categoryName) {
         CategoryFragment fragment = new CategoryFragment();
         fragment.title = categoryName;
-        fragment.list = list;
-        return fragment;
-    }
-
-    public static CategoryFragment newInstance() {
-        CategoryFragment fragment = new CategoryFragment();
+        fragment.list.clear();
+        fragment.list.addAll(list);
+        Bundle args = new Bundle();
+        args.putString("title",categoryName);
+        args.putParcelableArrayList("list",fragment.list);
+        //setArguments 设置 参数
+        fragment.setArguments(args);
         return fragment;
     }
 
@@ -42,6 +44,8 @@ public class CategoryFragment extends BaseFragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_category, container, false);
         ButterKnife.bind(this, view);
+        title = getArguments().getString("title");
+        list = getArguments().getParcelableArrayList("list");
         listViewAdapter = new ListViewAdapter(getActivity(),list);
         mListViewCategory.setAdapter(listViewAdapter);
         for (final BookInfo bookInfo : list) {
@@ -66,4 +70,10 @@ public class CategoryFragment extends BaseFragment {
     }
 
 
+    public void setList(List<BookInfo> list) {
+        list.clear();
+        list.addAll(list);
+        getArguments().putParcelableArrayList("list",this.list);
+        listViewAdapter.notifyDataSetChanged();
+    }
 }

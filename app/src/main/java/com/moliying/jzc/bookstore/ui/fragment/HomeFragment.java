@@ -37,7 +37,7 @@ public class HomeFragment extends BaseFragment {
     ListViewAdapter listViewAdapter;
     @BindView(R.id.include_layout_loading_home)
     LinearLayout mIncludeLayoutLoadingHome;
-    private boolean visibility = true ;
+    private boolean loadComplete = true ;
 
     public HomeFragment() {
     }
@@ -66,6 +66,12 @@ public class HomeFragment extends BaseFragment {
 
         listViewAdapter = new ListViewAdapter(getActivity(), mBookInfos);
         mBooksHomeListView.setAdapter(listViewAdapter);
+        loading();
+
+        return view;
+    }
+
+    private void loading() {
         BmobQuery<BookInfo> bmobQuery = new BmobQuery<>();
         bmobQuery.findObjects(new FindListener<BookInfo>() {
             @Override
@@ -73,9 +79,9 @@ public class HomeFragment extends BaseFragment {
                 if (e == null) {
                     mBookInfos.clear();
                     mBookInfos.addAll(list);
-                    if(visibility){
+                    if(loadComplete){
                         mIncludeLayoutLoadingHome.setVisibility(View.GONE);
-                        visibility = false;
+                        loadComplete = false;
                     }
                     HomeFragment.this.notifyDataDownLoad();
                     for (final BookInfo bookInfo : list) {
@@ -102,7 +108,6 @@ public class HomeFragment extends BaseFragment {
                 }
             }
         });
-        return view;
     }
 
     private void notifyDataDownLoad() {
@@ -120,7 +125,6 @@ public class HomeFragment extends BaseFragment {
     @Override
     public void onDetach() {
         super.onDetach();
-
     }
 
     public static HomeFragment getInstance() {

@@ -62,15 +62,20 @@ public class DiscoveryFragment extends BaseFragment {
             public void done(List<Categroy> list, BmobException e) {
                 if (e == null) {
                     for (final Categroy categroy : list) {
+                        fragments.add(CategoryFragment.newInstance
+                                (null, categroy.getCategoryName()));
+                        LoadingCategory();
                         BmobQuery<BookInfo> bmobQuery = new BmobQuery<BookInfo>();
                         bmobQuery.addWhereEqualTo("categoryId", categroy.getObjectId());
                         bmobQuery.findObjects(new FindListener<BookInfo>() {
                             @Override
                             public void done(List<BookInfo> list, BmobException e) {
                                 if (e == null) {
-                                    fragments.add(CategoryFragment.newInstance
-                                            (list, categroy.getCategoryName()));
-                                    LoadingCategory();
+                                    for (CategoryFragment fragment : fragments) {
+                                        if(fragment.title == categroy.getCategoryName()){
+                                            fragment.setList(list);
+                                        }
+                                    }
                                 }
                             }
                         });
@@ -80,16 +85,16 @@ public class DiscoveryFragment extends BaseFragment {
         });
     }
 
-    boolean visibility = true;
+    boolean loadComplete = true;
 
     private void LoadingCategory() {
         CategoryFragmentPageAdapter pageAdapter = new CategoryFragmentPageAdapter
                 (getActivity().getSupportFragmentManager(), fragments);
         mViewPagerDiscovery.setAdapter(pageAdapter);
         mTabs.setViewPager(mViewPagerDiscovery);
-        if (visibility) {
+        if (loadComplete) {
             mIncludeLayoutLoading.setVisibility(View.GONE);
-            visibility = false;
+            loadComplete = false;
         }
     }
 

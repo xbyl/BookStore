@@ -14,7 +14,6 @@ import com.moliying.jzc.bookstore.vo.BookInfo;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,19 +23,20 @@ import butterknife.ButterKnife;
  */
 public class ListViewAdapter extends BaseAdapter {
     Context context;
-    List<BookInfo> bookInfos;
+    ArrayList<BookInfo> bookInfos;
 
     public void setBookInfos(ArrayList<BookInfo> bookInfos) {
         this.bookInfos = bookInfos;
     }
 
-    public ListViewAdapter(Context context, List<BookInfo> bookInfos) {
+    public ListViewAdapter(Context context, ArrayList<BookInfo> bookInfos) {
         this.context = context;
         this.bookInfos = bookInfos;
     }
 
     @Override
     public int getCount() {
+        if(bookInfos == null ) return 0;
         return bookInfos.size();
     }
 

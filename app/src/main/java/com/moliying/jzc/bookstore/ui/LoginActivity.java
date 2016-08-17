@@ -40,7 +40,6 @@ public class LoginActivity extends BaseActivity implements CompoundButton.OnChec
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
         mCheckboxShowPass.setOnCheckedChangeListener(this);
-
     }
 
     @OnClick({R.id.button_toMainActivity, R.id.button_toRegisterActivity, R.id.button_login})
