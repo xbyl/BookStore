@@ -167,4 +167,13 @@
         android:layout_height="wrap_content"
         android:background="@mipmap/login_line"/>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="退出当前用户"
+        android:background="@drawable/bt_bg_blue"
+        android:id="@+id/button_exit_current_user"
+        android:layout_gravity="center_horizontal"/>
+
 </LinearLayout>

@@ -14,6 +14,7 @@ import android.widget.ListView;
 import com.moliying.jzc.bookstore.R;
 import com.moliying.jzc.bookstore.adapter.ListViewAdapter;
 import com.moliying.jzc.bookstore.ui.BookDetailActivity;
+import com.moliying.jzc.bookstore.ui.ShoppingCartActivity;
 import com.moliying.jzc.bookstore.vo.BookInfo;
 import com.panxw.android.imageindicator.AutoPlayManager;
 import com.panxw.android.imageindicator.ImageIndicatorView;
@@ -23,6 +24,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
@@ -37,10 +39,11 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
     @BindView(R.id.include_layout_loading_home)
     LinearLayout mIncludeLayoutLoadingHome;
 
-//    private boolean loadComplete = true ;
+    //    private boolean loadComplete = true ;
     ArrayList<BookInfo> mBookInfos = new ArrayList<>();
     ListViewAdapter listViewAdapter;
     View mFragment;
+
     public HomeFragment() {
     }
 
@@ -52,7 +55,7 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        if(null == mFragment){
+        if (null == mFragment) {
             mFragment = inflater.inflate(R.layout.fragment_home, container, false);
             ButterKnife.bind(this, mFragment);
             final Integer[] resArray = new Integer[]{R.mipmap.qdzt
@@ -72,16 +75,16 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
             mBooksHomeListView.setOnItemClickListener(this);
             loading();
         }
-
         return mFragment;
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        if(null != mFragment){
+        if (null != mFragment) {
             ViewGroup group = (ViewGroup) mFragment.getParent();
-            group.removeView(mFragment);
+            if (group != null)
+                group.removeView(mFragment);
         }
     }
 
@@ -94,7 +97,7 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
                     mBookInfos.clear();
                     mBookInfos.addAll(list);
 //                    if(loadComplete){
-                        mIncludeLayoutLoadingHome.setVisibility(View.GONE);
+                    mIncludeLayoutLoadingHome.setVisibility(View.GONE);
 //                        loadComplete = false;
 //                    }
                     HomeFragment.this.notifyDataDownLoad();
@@ -150,7 +153,13 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         BookInfo bookInfo = mBookInfos.get(position);
         Intent intent = new Intent(getActivity(), BookDetailActivity.class);
-        intent.putExtra("bookInfo",bookInfo);
+        intent.putExtra("bookInfo", bookInfo);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.imageView_shopping_cart)
+    public void onClick() {
+        Intent intent = new Intent(getActivity(),ShoppingCartActivity.class);
         startActivity(intent);
     }
 }

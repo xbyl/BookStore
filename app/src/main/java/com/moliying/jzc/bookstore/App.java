@@ -5,7 +5,6 @@ import android.content.Context;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.moliying.jzc.bookstore.ui.BaseActivity;
-import com.moliying.jzc.bookstore.vo.User;
 
 import java.util.LinkedList;
 
@@ -16,7 +15,6 @@ import cn.bmob.v3.BmobConfig;
  * Created by Jzc on 2016/8/15.
  */
 public class App extends Application{
-    public static User currentUser;
     public static Context mContext;
     public static LinkedList<BaseActivity> mActivities = new LinkedList<>();
     @Override
