@@ -12,14 +12,14 @@ public class Orders extends BmobObject{
     private String userId;//用户编号
     private String bookInfoId;//图书ID
     private int status;//状态 (未付款-1，已付款-2，已发货-3，配送中-4，已收货-5，已评价-6,购物车中-7)
-    private double subtotal;//小计
+    private double subtotal = 0;//小计
     private int total;//购买数量
-    private double discountPrice;//单价
+    private double discountPrice = 0;//单价
     private String bookName;//书名
     private String bookImage;//书图片路径
     private String orderId;// 订单编号
     private String buyDate;//购买时间
-    private double freight;//运费
+    private double freight = 0;//运费
     private Address address;//收货地址
 
     public Address getAddress() {

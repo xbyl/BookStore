@@ -201,6 +201,7 @@ public class BookDetailActivity extends BaseActivity {
         ordersBmobQuery.addWhereEqualTo("userId",user.getObjectId());
         ordersBmobQuery.addWhereEqualTo("bookInfoId",bookInfo.getObjectId());
         ordersBmobQuery.addWhereEqualTo("status",Constant.ORDER_IN_SHOPPING_CART);
+
         ordersBmobQuery.findObjects(new FindListener<Orders>() {
             @Override
             public void done(List<Orders> list, BmobException e) {
@@ -231,6 +232,7 @@ public class BookDetailActivity extends BaseActivity {
                         orders.setDiscountPrice(bookInfo.getDiscountPrice());
                         orders.setBookName(bookInfo.getBookName());
                         orders.setBookImage(bookInfo.getBookImage().getUrl());
+                        orders.setFreight(12.0);
                         orders.save(new SaveListener<String>() {
                             @Override
                             public void done(String s, BmobException e) {

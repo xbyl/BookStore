@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.moliying.jzc.bookstore.R;
+import com.moliying.jzc.bookstore.ui.AddressActivity;
 import com.moliying.jzc.bookstore.ui.LoginActivity;
 import com.moliying.jzc.bookstore.utils.Constant;
 import com.moliying.jzc.bookstore.vo.User;
@@ -99,6 +100,7 @@ public class PersonalFragment extends BaseFragment {
         } else {
             mTextViewLogin.setVisibility(View.INVISIBLE);
             mImageViewMineIcon.setVisibility(View.VISIBLE);
+            if(user.getUserIcon() != null )
             mImageViewMineIcon.setImageURI(user.getUserIcon().getUrl());
             mButtonExitCurrentUser.setVisibility(View.VISIBLE);
             mButtonAddress.setVisibility(View.VISIBLE);
@@ -117,9 +119,11 @@ public class PersonalFragment extends BaseFragment {
                 selectIcon();
                 break;
             case R.id.button_address:
+                Intent intent = new Intent(getActivity(), AddressActivity.class);
+                startActivity(intent);
                 break;
             case R.id.textView_login:
-                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                intent = new Intent(getActivity(), LoginActivity.class);
                 startActivityForResult(intent, REQUEST_CODE_LOGIN);
                 break;
             case R.id.item_order:

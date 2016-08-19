@@ -49,6 +49,12 @@
         </activity>
         <activity android:name=".ui.ShoppingCartActivity">
         </activity>
+        <activity android:name=".ui.AddressActivity">
+        </activity>
+        <activity android:name=".ui.AddAddressActivity">
+        </activity>
+        <activity android:name=".ui.EditAddressActivity">
+        </activity>
     </application>
 
 </manifest>
