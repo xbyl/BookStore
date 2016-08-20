@@ -90,6 +90,7 @@ public class EditAddressActivity extends AppCompatActivity {
                 });
                 break;
         }
+        setResult(RESULT_OK);
         this.finish();
     }
 

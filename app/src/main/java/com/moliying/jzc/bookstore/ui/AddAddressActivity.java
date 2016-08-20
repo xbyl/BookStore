@@ -57,6 +57,7 @@ public class AddAddressActivity extends AppCompatActivity {
         String address = mEditTextAddress.getText().toString();
         switch (view.getId()) {
             case R.id.button_return:
+                setResult(RESULT_CANCELED);
                 break;
             case R.id.button_save_address:
                 Address address_save = new Address();
@@ -65,6 +66,7 @@ public class AddAddressActivity extends AppCompatActivity {
                 address_save.setPhoneNumber(telPhone);
                 address_save.setAddress(address);
                 address_save.setIsDefault(false);
+                setResult(RESULT_OK);
                 break;
             case R.id.button_save_default_address:
                 for (Address address1 : mAddresses) {
@@ -88,6 +90,7 @@ public class AddAddressActivity extends AppCompatActivity {
                     public void done(String s, BmobException e) {
                     }
                 });
+                setResult(RESULT_OK);
                 break;
         }
         this.finish();

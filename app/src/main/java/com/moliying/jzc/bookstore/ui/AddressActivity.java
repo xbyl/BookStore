@@ -28,6 +28,8 @@ import cn.bmob.v3.listener.FindListener;
 
 public class AddressActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
+    private static final int REQUEST_CODE_ADD = 0x1;
+    private static final int REQUEST_CODE_EDIT = 0x2;
     @BindView(R.id.button_return)
     Button mButtonReturn;
     @BindView(R.id.button_address_add)
@@ -85,7 +87,7 @@ public class AddressActivity extends AppCompatActivity implements AdapterView.On
                 }
                 Intent intent = new Intent();
                 intent.putExtra("mAddresses",mAddresses);
-                startActivity(intent);
+                startActivityForResult(intent,REQUEST_CODE_ADD);
                 break;
         }
     }
@@ -96,6 +98,14 @@ public class AddressActivity extends AppCompatActivity implements AdapterView.On
         Intent intent = new Intent(this,EditAddressActivity.class);
         intent.putExtra("address",address);
         intent.putExtra("mAddresses",mAddresses);
-        startActivity(intent);
+        startActivityForResult(intent,REQUEST_CODE_EDIT);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == RESULT_OK){
+            initData();
+        }
     }
 }
