@@ -8,6 +8,7 @@ import com.moliying.jzc.bookstore.ui.BaseActivity;
 
 import java.util.LinkedList;
 
+import c.b.BP;
 import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobConfig;
 
@@ -22,11 +23,11 @@ public class App extends Application{
         super.onCreate();
         mContext = this;
         Fresco.initialize(mContext);
-        Bmob.initialize(mContext, "303a075281df5463c49a5ab99fe18ca2");
+//        Bmob.initialize(mContext, "303a075281df5463c49a5ab99fe18ca2");
 //        第二：自v3.4.7版本开始,设置BmobConfig,允许设置请求超时时间、文件分片上传时每片的大小、文件的过期时间(单位为秒)，
         BmobConfig config =new BmobConfig.Builder(this)
         //设置appkey
-        .setApplicationId("303a075281df5463c49a5ab99fe18ca2")
+        .setApplicationId("ccdeac6cc73c963e067bb9a83400b688")
         //请求超时时间（单位为秒）：默认15s
         .setConnectTimeout(30)
         //文件分片上传时每片的大小（单位字节），默认512*1024
@@ -35,6 +36,7 @@ public class App extends Application{
         .setFileExpiration(2500)
         .build();
         Bmob.initialize(config);
+        BP.init(mContext,"ccdeac6cc73c963e067bb9a83400b688");
     }
     public static void release(){
         mActivities = null;

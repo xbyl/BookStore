@@ -16,7 +16,6 @@ public final class Constant {
 //    //数据库名
 //    public static final String DB_NAME="CodingBookStore.db";
 
-
     //订单状态:
     public static final int ORDER_NON_PAYMENT = 0x1;//未付款
     public static final int ORDER_PAYMENTS_RECEIVED = 0x2;//已付款

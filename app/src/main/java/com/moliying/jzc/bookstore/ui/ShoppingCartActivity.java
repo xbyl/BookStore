@@ -145,6 +145,15 @@ public class ShoppingCartActivity extends AppCompatActivity implements ShoppingC
                 mButtonComplete.setVisibility(View.INVISIBLE);
                 break;
             case R.id.button_pay:
+                updateOrdersList();
+                clearRubbishList();
+                Intent intent = new Intent(this,PayActivity.class);
+                int size = mOrdersList.size();
+                intent.putExtra("size",size);
+                for(int i  = 0 ; i < size ; i ++ ){
+                    intent.putExtra(String.valueOf(i),mOrdersList.get(i));
+                }
+                startActivity(intent);
                 break;
         }
     }
@@ -155,7 +164,6 @@ public class ShoppingCartActivity extends AppCompatActivity implements ShoppingC
         new BmobBatch().updateBatch(objects).doBatch(new QueryListListener<BatchResult>() {
             @Override
             public void done(List<BatchResult> list, BmobException e) {
-
             }
         });
     }

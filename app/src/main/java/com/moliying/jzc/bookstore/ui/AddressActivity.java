@@ -41,12 +41,15 @@ public class AddressActivity extends AppCompatActivity implements AdapterView.On
 
     ArrayList<Address> mAddresses;
     AddressListViewAdapter addressListViewAdapter;
+    boolean returnAddress;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_address);
         ButterKnife.bind(this);
         mAddresses = new ArrayList<>();
+        returnAddress = getIntent().getBooleanExtra("returnAddress",false);
         initView();
         initData();
     }
@@ -65,6 +68,7 @@ public class AddressActivity extends AppCompatActivity implements AdapterView.On
             @Override
             public void done(List<Address> list, BmobException e) {
                 if(e == null){
+                    mAddresses.clear();
                     mAddresses.addAll(list);
                     addressListViewAdapter.setBookInfos(mAddresses);
                     addressListViewAdapter.notifyDataSetChanged();
@@ -95,10 +99,18 @@ public class AddressActivity extends AppCompatActivity implements AdapterView.On
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Address address = mAddresses.get(position);
-        Intent intent = new Intent(this,EditAddressActivity.class);
-        intent.putExtra("address",address);
-        intent.putExtra("mAddresses",mAddresses);
-        startActivityForResult(intent,REQUEST_CODE_EDIT);
+        if(returnAddress){
+            Intent intent = new Intent();
+            intent.putExtra("address",address);
+            setResult(RESULT_OK,intent);
+            this.finish();
+        }else{
+            Intent intent = new Intent(this,EditAddressActivity.class);
+            intent.putExtra("address",address);
+            intent.putExtra("mAddresses",mAddresses);
+            startActivityForResult(intent,REQUEST_CODE_EDIT);
+        }
+
     }
 
     @Override

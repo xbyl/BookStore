@@ -16,6 +16,7 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
     <uses-permission android:name="android.permission.READ_PROFILE"/>
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
 
     <application
         android:name=".App"
@@ -54,6 +55,8 @@
         <activity android:name=".ui.AddAddressActivity">
         </activity>
         <activity android:name=".ui.EditAddressActivity">
+        </activity>
+        <activity android:name=".ui.PayActivity">
         </activity>
     </application>
 
